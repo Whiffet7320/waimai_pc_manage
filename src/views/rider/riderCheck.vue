@@ -102,17 +102,7 @@
             />
           </el-col>
         </el-row>
-        <el-row class="input-flex input-img">
-          <el-col :span="5" style="text-align: right"> 头像: </el-col>
-          <el-col :span="19" :push="1">
-            <el-image
-              style="width: 100px; height: 100px"
-              :src="temp.headimgurl"
-              :preview-src-list="[temp.headimgurl]"
-            >
-            </el-image>
-          </el-col>
-        </el-row>
+       
         <el-row class="input-flex input-img">
           <el-col :span="5" style="text-align: right"> 身份证照片: </el-col>
           <el-col :span="19" :push="1">
@@ -160,6 +150,14 @@
             {{ temp.riderhelpname }}{{ temp.riderhelpphone }}
           </el-col>
         </el-row>
+        <el-row class="input-flex">
+          <el-col :span="5" style="text-align: right"> 分成方式: </el-col>
+          <el-col :span="19" :push="1">
+            <el-radio v-model="temp.fencheng" label="0">比例</el-radio>
+            <el-radio v-model="temp.fencheng" label="1">固定</el-radio>
+          </el-col>
+        </el-row>
+
         <el-row class="input-flex">
           <el-col :span="5" style="text-align: right"> 审核: </el-col>
           <el-col :span="19" :push="1">

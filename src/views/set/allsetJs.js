@@ -23,6 +23,9 @@ import appleshenhe from "./components/appleshenhe/appleshenhe.vue";
 import qishoubaoxian from "./components/qishoubaoxian/index.vue";
 import qishouguize from "./components/qishouguize/index.vue";
 import usecoupon from "./components/usecoupon/index.vue";
+
+import gonggao from "./components/gonggao/gonggao.vue";
+
 export default {
   directives: { waves },
   components: {
@@ -48,7 +51,8 @@ export default {
     appleshenhe,
     qishoubaoxian,
     qishouguize,
-    usecoupon
+    usecoupon,
+    gonggao
   },
   data() {
     return {
@@ -77,6 +81,7 @@ export default {
       baoxian: {},
       qishouguize: {},
       usecoupon:{},
+      gonggao:{}
     };
   },
   created() {
@@ -91,7 +96,7 @@ export default {
       getSet().then(res => {
         if (res.errcode == 0) {
           this.data = res.data;
-          console.log(res.data);
+          console.log(res.data,111111111);
           this.xiaofeitemp = res.data.xiaofeimoban;
           this.weighttemp = res.data.weightmoban;
           this.baojiatemp = res.data.orderjiazhi;
@@ -115,6 +120,7 @@ export default {
           this.baoxian = res.data.riderfirst;
           this.qishouguize = res.data.riderfenrule;
           this.usecoupon = res.data.youhuiflag;
+          this.gonggao = res.data.gonggao;
           this.listLoading = false;
         } else {
           this.$message({

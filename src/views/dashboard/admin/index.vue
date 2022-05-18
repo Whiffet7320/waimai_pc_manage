@@ -278,9 +278,9 @@ export default {
       hhrList: [],
       zbList: [],
       tablist: [
-        { id: "1", name: "用户下单" },
-        { id: "2", name: "跑腿配送" },
-        { id: "4", name: "跑腿完成" }
+        // { id: "1", name: "用户下单" },
+        // { id: "2", name: "跑腿配送" },
+        // { id: "4", name: "跑腿完成" }
       ],
       tabindex: 0
     };
@@ -364,7 +364,7 @@ export default {
       this.myChart = echarts.init(document.getElementById("map"));
       this.$axios({
         method: "get",
-        url: "/map/沈阳市.json", // 接口地址
+        url: "/map/北京市.json", // 接口地址
         data: {
           keyword: "1" // 传接口参数
         }

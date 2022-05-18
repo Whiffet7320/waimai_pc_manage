@@ -82,6 +82,8 @@ export default {
                 money: "",
                 riderfen: "",
                 jifen: "",
+                fencheng:0,
+                fenchengfee:"0"
             },
             accountstatusOptions: [{ label: "正常", value: "0" }, { label: "停封", value: "1" }],
             dialogFormVisible: false,

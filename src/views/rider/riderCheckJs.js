@@ -38,6 +38,7 @@ export default {
                 accountstatus: "0",
                 status: "0",
                 textarea: "",
+                fencheng:0
             },
             accountstatusOptions: [{ label: "正常", value: "0" }, { label: "停封", value: "1" }],
             dialogFormVisible: false,
@@ -84,12 +85,14 @@ export default {
             console.log(this.temp);
             if (this.$isEmpty(this.temp.status)) return this.$message.error('未选择审核类型');
             const tempData = Object.assign({}, this.temp)
-            tempData.timestamp = +new Date(tempData.timestamp) // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
+            
+            tempData.timestamp = +new Date(tempData.timestamp)
             if (tempData['status'] == "1") {
                 tempData['agree'] = 'ok';
             } else {
                 tempData['agree'] = 'ng';
             }
+            console.log(tempData,"======")
             agreeCheck(tempData).then((res) => {
                 if (res.errcode == 0) {
                     const index = this.list.findIndex(v => v.id === this.temp.id)

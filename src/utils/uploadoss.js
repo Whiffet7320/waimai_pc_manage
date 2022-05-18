@@ -21,6 +21,8 @@ export function uploadimgtooss(file) {
         }
         var fildername = timestampToTime(timestamp, 'YMD')
         console.log('fildername=====',fildername)
+        fildername = fildername.replace(/(^\s*)|(\s*$)/g, "");
+        console.log('fildername--------------',fildername)
         let result = await client.multipartUpload(fildername + '/' + timestamp + name + '.' + contentType, file.raw);
         var url = 'http://' + bucket + '.' + region + '.aliyuncs.com/' + result.name
         resolve(url);

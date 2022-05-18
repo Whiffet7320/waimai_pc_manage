@@ -15,7 +15,7 @@
     </div>
 
     <div style="height: 50px"></div>
-    <div class="input-flex">
+    <!-- <div class="input-flex">
       <div class="left">校园商家抽成：</div>
       <el-radio v-model="school.iskaiqi" :label="0">关闭</el-radio>
       <el-radio v-model="school.iskaiqi" :label="1">开启</el-radio>
@@ -28,7 +28,7 @@
       <div class="left">默认配送费：</div>
       <input type="number" v-model="school.peisong" />
     </div>
-    <div style="height: 50px"></div>
+    <div style="height: 50px"></div> -->
     <el-button type="primary" @click="onSubmit">确定</el-button>
   </div>
 </template>

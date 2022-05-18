@@ -68,17 +68,18 @@ export default {
                 starttime: '',
                 endtime: '',
                 choujiang_wight:0,
-                is_choujiang:0
+                is_choujiang:0,
+                is_xinyonghu:0
             },
             addTypeList: [
                 {
                     "value": "1",
                     "label": "折扣券",
                 },
-                {
-                    "value": "2",
-                    "label": "现金抵扣券",
-                }
+                // {
+                //     "value": "2",
+                //     "label": "现金抵扣券",
+                // }
             ],
             addTimeTypeList: [
                 {

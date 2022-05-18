@@ -218,6 +218,40 @@
             </el-image>
           </el-col>
         </el-row>
+
+         <el-row class="input-flex">
+          <el-col :span="5" style="text-align: right"> 配送费: </el-col>
+          <el-col :span="19" :push="1">
+            <el-input
+              v-model="temp.peisongfei"
+              style="width: 200px"
+              class="filter-item"
+            />
+          </el-col>
+        </el-row>
+
+        <el-row class="input-flex">
+          <el-col :span="5" style="text-align: right"> 起送价: </el-col>
+          <el-col :span="19" :push="1">
+             <el-input
+              v-model="temp.qisongjia"
+              style="width: 200px"
+              class="filter-item"
+            />
+          </el-col>
+        </el-row>
+
+        <el-row class="input-flex">
+          <el-col :span="5" style="text-align: right"> 配送范围: </el-col>
+          <el-col :span="19" :push="1">
+            <el-input
+              v-model="temp.peisongfanwei"
+              style="width: 200px"
+              class="filter-item"
+            />
+          </el-col>
+        </el-row>
+
         <!-- <el-row class="input-flex">
           <el-col :span="4" style="text-align: right"> 封号: </el-col>
           <el-col :span="19" :push="1">
@@ -234,12 +268,12 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false"> 取消 </el-button>
-        <!-- <el-button
+        <el-button
           type="primary"
-          @click="dialogStatus === 'create' ? createData() : updateData()"
+          @click="updateData()"
         >
           确定
-        </el-button> -->
+        </el-button>
       </div>
     </el-dialog>
   </div>

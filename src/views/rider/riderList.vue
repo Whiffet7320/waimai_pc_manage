@@ -179,41 +179,7 @@
             <el-radio v-model="temp.sex" label="2">女</el-radio>
           </el-col>
         </el-row>
-        <el-row class="input-flex input-img">
-          <el-col :span="5" style="text-align: right"> 头像: </el-col>
-          <el-col :span="19" :push="1">
-            <el-image
-              style="width: 100px; height: 100px"
-              :src="temp.headimgurl"
-              :preview-src-list="[temp.headimgurl]"
-            >
-            </el-image>
-            <!-- <el-upload
-              ref="upload"
-              class="avatar-uploader"
-              action
-              :show-file-list="false"
-              :auto-upload="false"
-              :on-change="getheadFile"
-            >
-              <div class="imgbox">
-                <img
-                  v-if="temp.headimgurl"
-                  :src="temp.headimgurl"
-                  class="avatar"
-                />
-                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                <span
-                  v-if="temp.headimgurl"
-                  class="imgPre"
-                  @click="handlePictureCardPreview(temp.headimgurl)"
-                >
-                  <i class="el-icon-zoom-in"></i>
-                </span>
-              </div>
-            </el-upload> -->
-          </el-col>
-        </el-row>
+        
         <el-row class="input-flex input-img">
           <el-col :span="5" style="text-align: right"> 身份证照片: </el-col>
           <el-col :span="19" :push="1">
@@ -248,11 +214,26 @@
             </el-image>
           </el-col>
         </el-row>
+         <el-row class="input-flex">
+          <el-col :span="6" style="text-align: right"> 外卖分成方式: </el-col>
+          <el-col :span="10" :push="1">
+            <el-radio v-model="temp.fencheng" label="0">比例</el-radio>
+            <el-radio v-model="temp.fencheng" label="1">固定</el-radio>
+          </el-col>
+          <el-col :span="8">
+            <el-input
+              v-model="temp.fenchengfee"
+              placeholder="固定金额"
+              style="width: 100px"
+              class="filter-item"
+            />
+          </el-col>
+        </el-row>
         <el-row class="input-flex">
           <el-col :span="5" style="text-align: right"> 专职/兼职: </el-col>
           <el-col :span="19" :push="1">
-            <el-radio v-model="temp.iszhuanzhi" label="0">专职</el-radio>
-            <el-radio v-model="temp.iszhuanzhi" label="1">兼职</el-radio>
+            <el-radio v-model="temp.iszhuanzhi" label="0">兼职</el-radio>
+            <el-radio v-model="temp.iszhuanzhi" label="1">专职</el-radio>
           </el-col>
         </el-row>
         <el-row class="input-flex">

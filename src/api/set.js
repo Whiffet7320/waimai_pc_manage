@@ -114,3 +114,22 @@ export function gethomebanner(data) {
     method: 'get',
   })
 }
+
+
+export function setsiteconfig(data) {
+  return getRequest({
+    url: getRequestUrl('/server/admin/setsiteconfig', {
+      type: data.type,
+      riderjiedan_juli: data.riderjiedan_juli,
+      koudian:data.koudian
+    }),
+    method: 'get',
+  })
+}
+
+export function getsiteconfig(data) {
+  return getRequest({
+    url: getRequestUrl('/server/admin/getsiteconfig', data),
+    method: 'get',
+  })
+}

@@ -21,7 +21,8 @@ export default {
                 userphone: "",
                 username: "",
                 timefilter: "",
-                needdate: "0"
+                needdate: "0",
+                type: 0
             },
             qishouQuery: {
                 type: 3,

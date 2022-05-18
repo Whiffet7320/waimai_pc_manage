@@ -3,28 +3,29 @@
     <div class="filter-container">
       <!-- 头部搜索 -->
       <el-tabs v-model="changeIndex" @tab-click="handleClick">
-        <el-tab-pane label="小费设置" name="1"></el-tab-pane>
-        <el-tab-pane label="重量设置" name="2"></el-tab-pane>
-        <el-tab-pane label="保价设置" name="3"></el-tab-pane>
-        <el-tab-pane label="类型设置" name="4"></el-tab-pane>
-        <el-tab-pane label="加急单设置" name="5"></el-tab-pane>
-        <el-tab-pane label="车辆设置" name="6"></el-tab-pane>
-        <el-tab-pane label="溢价设置" name="7"></el-tab-pane>
-        <el-tab-pane label="高峰时段" name="8"></el-tab-pane>
-        <el-tab-pane label="骑手等级" name="9"></el-tab-pane>
-        <el-tab-pane label="退货补贴" name="10"></el-tab-pane>
-        <el-tab-pane label="送货设置" name="11"></el-tab-pane>
-        <el-tab-pane label="绩效分成" name="12"></el-tab-pane>
-        <el-tab-pane label="分销模板" name="13"></el-tab-pane>
-        <el-tab-pane label="推送延迟" name="14"></el-tab-pane>
+        <el-tab-pane label="跑腿小费设置" name="1"></el-tab-pane>
+        <el-tab-pane label="跑腿重量设置" name="2"></el-tab-pane>
+        <el-tab-pane label="跑腿保价设置" name="3"></el-tab-pane>
+        <el-tab-pane label="跑腿类型设置" name="4"></el-tab-pane>
+        <el-tab-pane label="跑腿加急单设置" name="5"></el-tab-pane>
+        <!-- <el-tab-pane label="车辆设置" name="6"></el-tab-pane> -->
+        <el-tab-pane label="跑腿溢价设置" name="7"></el-tab-pane>
+        <el-tab-pane label="跑腿高峰时段" name="8"></el-tab-pane>
+        <el-tab-pane label="通用骑手等级" name="9"></el-tab-pane>
+        <el-tab-pane label="跑腿退货补贴" name="10"></el-tab-pane>
+        <el-tab-pane label="通用送货设置" name="11"></el-tab-pane>
+        <el-tab-pane label="通用绩效分成" name="12"></el-tab-pane>
+        <!-- <el-tab-pane label="分销模板" name="13"></el-tab-pane> -->
+        <!-- <el-tab-pane label="推送延迟" name="14"></el-tab-pane> -->
         <el-tab-pane label="开屏广告" name="15"></el-tab-pane>
         <el-tab-pane label="骑手接单费用" name="17" v-if="riderjiedan.price"></el-tab-pane>
         <el-tab-pane label="接单公里限制" name="16" v-else></el-tab-pane>
         <el-tab-pane label="抽成比例" name="18"></el-tab-pane>
         <el-tab-pane label="苹果审核" name="19"></el-tab-pane>
         <el-tab-pane label="骑士保险" name="20"></el-tab-pane>
-        <el-tab-pane label="骑士规则" name="21"></el-tab-pane>
-        <el-tab-pane label="优惠券设置" name="22"></el-tab-pane>
+        <el-tab-pane label="跑腿骑士规则" name="21"></el-tab-pane>
+        <!-- <el-tab-pane label="优惠券设置" name="22"></el-tab-pane> -->
+        <el-tab-pane label="公告设置" name="23"></el-tab-pane>
       </el-tabs>
     </div>
 
@@ -72,6 +73,8 @@
     <qishouguize v-if="changeIndex == 21 && !$isEmpty(qishouguize)" :data="data" :dataObj="qishouguize"></qishouguize>
     <!-- 优惠券设置 -->
     <usecoupon v-if="changeIndex == 22 && !$isEmpty(usecoupon)" :data="data" :dataObj="usecoupon"></usecoupon>
+    <!-- 首页公告 -->
+    <gonggao v-if="changeIndex == 23 && !$isEmpty(gonggao)" :data="data" :dataObj="gonggao"></gonggao>
   </div>
 </template>
 

@@ -185,7 +185,7 @@ export default {
       this.dialogVisible = true
     },
     handleEdit(scope) {
-    
+      console.log("edit")
       this.dialogType = 'edit'
       this.dialogVisible = true
       this.checkStrictly = true
@@ -242,18 +242,24 @@ export default {
     },
     async confirmRole() {
       const routes = this.$refs.tree.getCheckedNodes();
+
+      const parentroutes = this.$refs.tree.getHalfCheckedNodes();
+
       var arr = [];
       for(var i = 0; i < routes.length; i ++)
       {
           arr.push(routes[i]['id'])
       } 
+      for(var i = 0; i < parentroutes.length; i ++)
+      {
+          arr.push(parentroutes[i]['id'])
+      } 
       const isEdit = this.dialogType === 'edit'
       var data = this.role;
       data.routes = arr;
-      
+      console.log("this is arr",arr);
       if (isEdit) {
-        console.log('toedit');  
-    
+
         const res = await updateRole(data)
         if(res.errcode == 0){
           this.$message({

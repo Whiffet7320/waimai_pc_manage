@@ -3,6 +3,7 @@ import { getUserList, getFiltersUserList } from "@/api/user";
 import { fenghao } from "@/api/user";
 import waves from "@/directive/waves"; // waves directive
 import { parseTime } from '@/utils';
+import { setshopconfig } from "@/api/store";
 
 export default {
   name: "Userlist",
@@ -124,34 +125,22 @@ export default {
     },
     updateData() {
       this.dialogFormVisible = false;
-      // 编辑保存
-      // this.$refs["dataForm"].validate(valid => {
-      //   if (valid) {
-      //     const tempData = Object.assign({}, this.temp);
-      //     tempData.timestamp = +new Date(tempData.timestamp); // change Thu Nov 30 2017 16:41:05 GMT+0800 (CST) to 1512031311464
-      //     var data = {
-      //       uid: tempData.id,
-      //     };
-      //     fenghao(data).then(res => {
-      //       if (res.errcode == 0) {
-      //         const index = this.list.findIndex(v => v.id === this.temp.id);
-      //         this.list.splice(index, 1, this.temp);
-      //         this.dialogFormVisible = false;
-      //         this.$notify({
-      //           title: "",
-      //           message: "更新成功",
-      //           type: "success",
-      //           duration: 2000
-      //         });
-      //       } else {
-      //         this.$message({
-      //           message: res.errmsg,
-      //           type: "error"
-      //         });
-      //       }
-      //     });
-      //   }
-      // });
+
+      setshopconfig(this.temp).then((res) => {
+        if (res.errcode == 0) {
+          const index = this.list.findIndex(v => v.id === this.temp.id)
+          this.list.splice(index, 1, this.temp)
+          console.log(this.temp,"======")
+          this.$message.success('操作成功');
+        } else {
+            this.$message({
+                message: res.errmsg,
+                type: "error",
+            });
+        }
+    })
+      
+     
     },
     fenghao(index, row) {
       var data = {

@@ -131,6 +131,13 @@
         </template>
       </el-table-column>
 
+       <el-table-column label="是否获得新用户" align="center">
+        <template slot-scope="scope">
+          {{ scope.row.is_choujiang | filterSimpleStatus }}
+        </template>
+      </el-table-column>
+      
+
       <el-table-column label="操作" align="center">
         <template slot-scope="scope">
           <span
@@ -314,6 +321,26 @@
                   placeholder="0不会中奖,值越大越容易中奖"
                 ></el-input>
               </div>
+          </el-col>
+        </el-row>
+
+        <el-row>
+          <el-col :span="12">
+            <div class="input-flex">
+              <div class="left">是否新用户：</div>
+              <el-select
+                v-model="addQuery.is_choujiang"
+                style="width: 150px"
+                class="filter-item"
+              >
+                <el-option
+                  v-for="item in isChoujiang"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
+              </el-select>
+            </div>
           </el-col>
         </el-row>
 

@@ -89,3 +89,16 @@ export function caozuojubao(data) {
     method: 'get',
   })
 }
+
+// 配置商户信息
+export function setshopconfig(data) {
+  return getRequest({
+    url: getRequestUrl('/server/admin/setshopconfig', {
+      shopid: data.id,
+      peisongfei: data.peisongfei,
+      qisongjia:data.qisongjia,
+      peisongfanwei:data.peisongfanwei
+    }),
+    method: 'get',
+  })
+}

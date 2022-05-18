@@ -17,6 +17,7 @@ export function agreeCheck(data) {
       uid: data.uid,
       agree: data.agree,
       text: data.textarea,
+      fencheng:data.fencheng
     }),
     method: 'get'
   })

@@ -17,7 +17,7 @@
       </el-table-column>
       <el-table-column prop="shoptitle" label="店铺名称" align="center">
       </el-table-column>
-      <el-table-column prop="phone" label="联系方式" align="center">
+      <el-table-column prop="shopphone" label="联系方式" align="center">
       </el-table-column>
       <el-table-column label="店铺logo" align="center">
         <template slot-scope="scope">
@@ -115,7 +115,7 @@
           <el-col :span="5" style="text-align: right"> 联系电话: </el-col>
           <el-col :span="19" :push="1">
             <el-input
-              v-model="temp.phone"
+              v-model="temp.shopphone"
               style="width: 200px"
               class="filter-item"
               readonly
@@ -186,22 +186,22 @@
           </el-col>
         </el-row>
 
-       <!-- <el-row class="input-flex">
+       <el-row class="input-flex">
           <el-col :span="5" style="text-align: right"> 审核: </el-col>
           <el-col :span="19" :push="1">
             <el-radio v-model="temp.status" label="1">通过</el-radio>
             <el-radio v-model="temp.status" label="2">拒绝</el-radio>
           </el-col>
-        </el-row> -->
+        </el-row>
         <el-row class="input-flex">
           <el-col :span="5" style="text-align: right"></el-col>
           <el-col :span="19" :push="1">
             <el-input
-              v-if="temp.status == 2"
+             
               type="textarea"
               :rows="2"
-              placeholder="请输入拒绝原因"
-              v-model="temp.textarea"
+              placeholder="输入内容"
+              v-model="temp.text"
             >
             </el-input>
           </el-col>

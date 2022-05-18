@@ -179,7 +179,7 @@ export default {
     },
 
     changedata(index) {
-      console.log(index);
+
       this.tabindex = index;
       if (index == 0) {
         // 订单数

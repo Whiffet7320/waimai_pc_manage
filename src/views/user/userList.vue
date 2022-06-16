@@ -13,7 +13,7 @@
               class="filter-item"
             /></div
         ></el-col>
-        <el-col :span="8">
+        <!-- <el-col :span="8">
           <div class="input-flex">
             会员等级：
             <el-select
@@ -29,8 +29,8 @@
               />
             </el-select>
           </div>
-        </el-col>
-        <el-col :span="8">
+        </el-col> -->
+        <!-- <el-col :span="8">
           <div class="input-flex">
             下单次数：
             <el-select
@@ -46,7 +46,7 @@
               />
             </el-select>
           </div>
-        </el-col>
+        </el-col> -->
       </el-row>
 
       <el-row :gutter="20">
@@ -79,7 +79,7 @@
             />
           </div>
         </el-col>
-        <el-col :span="8">
+        <!-- <el-col :span="8">
           <div class="input-flex">
             消费行为：
             <el-cascader
@@ -87,7 +87,7 @@
               :options="xiaofeioptions"
             ></el-cascader>
           </div>
-        </el-col>
+        </el-col> -->
         <!-- <el-col :span="8">
           <div class="input-flex">
             收款方式：

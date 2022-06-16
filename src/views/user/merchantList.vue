@@ -56,6 +56,9 @@
         </template>
       </el-table-column>
 
+      <el-table-column prop="remark" label="备注" align="center">
+      </el-table-column>
+
       <el-table-column label="操作" align="center">
         <template slot-scope="scope">
           <el-button
@@ -185,6 +188,21 @@
             {{ temp.shopaddress }}
           </el-col>
         </el-row>
+
+        <el-row class="input-flex">
+          <el-col :span="5" style="text-align: right"> 代理商备注: </el-col>
+          <el-col :span="19" :push="1">
+             <el-input
+             
+              type="textarea"
+              :rows="2"
+              placeholder="输入备注内容"
+              v-model="temp.remark"
+            >
+            </el-input>
+          </el-col>
+        </el-row>
+
 
        <el-row class="input-flex">
           <el-col :span="5" style="text-align: right"> 审核: </el-col>

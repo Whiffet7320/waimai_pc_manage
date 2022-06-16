@@ -128,6 +128,22 @@
             type="danger"
             >删除</el-button
           > -->
+          <el-button
+            size="mini"
+            @click="handleMap(scope.$index, scope.row)"
+            style="margin-top: 10px"
+            type="primary"
+            >查看位置</el-button
+          >
+
+          <el-button
+            size="mini"
+            @click="handleOrder(scope.$index, scope.row)"
+            style="margin-top: 10px"
+            type="primary"
+            >接单信息</el-button
+          >
+
         </template>
       </el-table-column>
     </el-table>
@@ -338,6 +354,23 @@
         >
       </div>
     </el-dialog>
+
+    <el-dialog :visible.sync="dialogMapVisible" title="骑手积分" width="500px" >
+      <el-image
+      :src="mapurl"
+      :fit="fit"></el-image>
+    </el-dialog>
+
+  <el-dialog title="骑手订单" :visible.sync="dialogTableVisible">
+    <el-table :data="gridData">
+      <el-table-column label="订单id" > <template slot-scope="scope">{{getorderid(scope.row.details)}}</template>  </el-table-column>
+      <el-table-column property="address.address" label="目的地" ></el-table-column>
+      <el-table-column label="是否已取货" > <template slot-scope="scope">{{getstatusname(scope.row.status,'quhuo')}}</template> </el-table-column>
+      <el-table-column label="是否已完成" > <template slot-scope="scope">{{getstatusname(scope.row.status,'wancheng')}}</template> </el-table-column>
+
+    </el-table>
+  </el-dialog>
+
   </div>
 </template>
 

@@ -26,3 +26,9 @@ export function upload(data) {
   })
 }
 
+export function getmap(){
+    return getRequest({
+        url: getRequestUrl('https://restapi.amap.com/v3/staticmap?markers=-1,https://a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-default.png,0:120.635399,27.966388&key=db02839d3d4b5cd28ca4f5d631d303db'),
+        method: 'get',
+      })
+}

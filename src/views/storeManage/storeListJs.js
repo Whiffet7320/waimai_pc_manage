@@ -61,7 +61,8 @@ export default {
       temp: {
         id: undefined,
         type: 2,
-        timestamp: new Date()
+        timestamp: new Date(),
+        tags:[]
       },
       accountstatusOptions: [
         { label: "正常", value: "0" },
@@ -79,6 +80,11 @@ export default {
     this.getList();
   },
   methods: {
+    handlePingjia(index,row){
+      console.log(index,"this is index")
+      console.log(row,"this is row")
+      this.$router.push('/orderManage/pingjiaList?id='+row.id)
+    },
     getList() {
       this.listLoading = true;
       getUserList(this.listQuery).then(res => {
@@ -114,7 +120,8 @@ export default {
     },
     handleEdit(index, row) {
       // 编辑
-      this.temp = Object.assign({}, row); // copy obj
+      // this.temp = Object.assign({}, row); // copy obj
+      this.temp = {...this.temp,...row}
       this.temp.timestamp = new Date(this.temp.timestamp);
       console.log("this.temp--->>>", this.temp);
       this.dialogStatus = "update";
@@ -125,7 +132,8 @@ export default {
     },
     updateData() {
       this.dialogFormVisible = false;
-
+      this.temp.tags = this.temp.tags.toString()
+      console.log(this.temp)
       setshopconfig(this.temp).then((res) => {
         if (res.errcode == 0) {
           const index = this.list.findIndex(v => v.id === this.temp.id)

@@ -99,28 +99,28 @@
                 <h4>{{ data.dangqiandan }}</h4>
                 <span>
                   <i class="icon-dot" style="color: #006cff"></i>
-                  当前订单数
+                  总订单数
                 </span>
               </div>
               <div class="item">
-                <h4>{{ data.dangqianwancheng }}</h4>
+                <h4>{{ data.thisweekorder }}</h4>
                 <span>
                   <i class="icon-dot" style="color: #6acca3"></i>
-                  完成订单数
+                  近7天订单数
                 </span>
               </div>
               <div class="item">
-                <h4>{{ data.rideronline }}</h4>
+                <h4>{{ data.thisweekchoucheng }}</h4>
                 <span>
                   <i class="icon-dot" style="color: #6acca3"></i>
-                  骑手在线数
+                  近7天抽点金额
                 </span>
               </div>
               <div class="item">
-                <h4>{{ data.shoponline }}</h4>
+                <h4>{{ data.thisweekyingli }}</h4>
                 <span>
                   <i class="icon-dot" style="color: #ed3f35"></i>
-                  商家在线数
+                  近7天盈利金额
                 </span>
               </div>
             </div>

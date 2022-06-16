@@ -95,9 +95,16 @@ export function setshopconfig(data) {
   return getRequest({
     url: getRequestUrl('/server/admin/setshopconfig', {
       shopid: data.id,
-      peisongfei: data.peisongfei,
-      qisongjia:data.qisongjia,
-      peisongfanwei:data.peisongfanwei
+      peisongfei: data.peisongfei.toString(),
+      qisongjia:data.qisongjia.toString(),
+      peisongfanwei:data.peisongfanwei.toString(),
+      koudian:data.koudian.toString(),
+      qibujia:data.qibujia.toString(),
+      overjia:data.overjia.toString(),
+      qibufanwei:data.qibufanwei.toString(),
+      isreceive : data.isreceive,
+      tixianbiaozhun:data.tixianbiaozhun.toString(),
+      peisongshijian:data.peisongshijian.toString(),
     }),
     method: 'get',
   })

@@ -1,5 +1,5 @@
 import Pagination from "@/components/Pagination";
-import { getpingjia } from "@/api/order";
+import { getpingjia,delPingjia } from "@/api/order";
 import waves from "@/directive/waves"; // waves directive
 
 export default {
@@ -51,11 +51,25 @@ export default {
         this.resetpage();
     },
     methods: {
+        delComment(commentId,type){
+            delPingjia({comment_id:commentId,type:type}).then((res) => {
+                this.$message({
+                    message: '删除成功',
+                    type: "success"
+                });
+            });
+        },
         resetpage() {
             this.listQuery.page = 1;
             this.getList();
         },
         getList() {
+            console.log(this.$route.query.id ,"=======")
+            let urlparam = this.$route.query
+            
+            if(urlparam){
+                this.listQuery.store_id = urlparam.id
+            }
             getpingjia(this.listQuery).then((res) => {
                 if (res.errcode == 0) {
                     this.list = res.data.list;
@@ -73,7 +87,7 @@ export default {
             item.value = !item.value;
         },
         handleFilter() {
-            var str = "";
+            var str = 0;
             for (var i = 0; i < this.starList.length; i++) {
                 if (this.starList[i].value) {
                     str += this.starList[i].id

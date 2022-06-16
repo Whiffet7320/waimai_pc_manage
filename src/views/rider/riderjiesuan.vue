@@ -1,24 +1,29 @@
 <template>
   <div class="app-container">
+    <div class="filter-container">
+        <el-col :span="8">
+          <el-button
+            class="filter-item"
+            type="primary"
+            icon="el-icon-search"
+            @click="handlejiesuan"
+          >
+            结算
+          </el-button>
+         
+        </el-col>
+    </div>
     <el-table :data="list" style="width: 100%" stripe>
-      <el-table-column  label="固定或比例" align="center">
-         <template slot-scope="scope">
-          {{ scope.row.numorbili == 1 ? '固定' : '比例' }}
-        </template>
+      <el-table-column prop="phone" label="手机号码" align="center">
+         
       </el-table-column>
-      <el-table-column prop="uid" label="被抽成人ID" align="center">
+      <el-table-column prop="coin" label="账户内金额" align="center">
       </el-table-column>
-      <el-table-column prop="chouchengbili" label="抽成比例(%)" align="center">
+      <el-table-column prop="yijiesuan" label="已结算金额" align="center">
       </el-table-column>
-      <el-table-column prop="num" label="抽成金额" align="center">
+      <el-table-column prop="yitixian" label="已提现金额" align="center">
       </el-table-column>
-      <el-table-column prop="desc" label="描述" align="center">
-      </el-table-column>
-      <el-table-column prop="" label="创建时间" align="center">
-        <template slot-scope="scope">
-          {{ scope.row.createtime | formatConversion }}
-        </template>
-      </el-table-column>
+    
     </el-table>
 
     <!-- 分页 -->
@@ -33,7 +38,7 @@
 
 <script>
 import Pagination from "@/components/Pagination";
-import { getchoucenglist } from "@/api/money";
+import { getShopAndQishouList,jiesuan } from "@/api/money";
 export default {
   components: { Pagination },
   data() {
@@ -42,7 +47,8 @@ export default {
       // 筛选条件
       listQuery: {
         page: 1,
-        limit: 10
+        limit: 10,
+        from:2
       },
       //数据
       list: []
@@ -52,12 +58,20 @@ export default {
     this.getList();
   },
   methods: {
+    handlejiesuan(){
+        jiesuan({'from':2}).then(res => {
+           this.$message({
+              message: res.msg,
+              type: "success"
+            });
+        });
+    }, 
     getList() {
       this.listLoading = true;
-      getchoucenglist(this.listQuery).then(res => {
+      getShopAndQishouList(this.listQuery).then(res => {
         if (res.errcode == 0) {
-          this.list = res.data.list;
-          this.total = res.data.count;
+          this.list = res.list;
+          this.total = res.count;
           this.listLoading = false;
         } else {
           this.$message({

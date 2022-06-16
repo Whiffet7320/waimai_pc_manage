@@ -61,3 +61,11 @@ export function agreeWithdraw(data) {
   })
 }
 
+//骑手订单详情
+export function getriderorderlist(data) {
+  return getRequest({
+    url: getRequestUrl('/server/admin/getwaimaiorderbyqishou', data),
+    method: 'get'
+  })
+}
+

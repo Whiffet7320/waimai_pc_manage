@@ -41,3 +41,17 @@ export function agreeFapiaoCheck(data) {
     method: 'get',
   })
 }
+
+export function getShopAndQishouList(data) {
+  return getRequest({
+    url: getRequestUrl('/server/admin/shopandqishou', data),
+    method: 'get',
+  })
+}
+
+export function jiesuan(data) {
+  return getRequest({
+    url: getRequestUrl('/server/shop/shopandqishoujiesuan', data),
+    method: 'get',
+  })
+}

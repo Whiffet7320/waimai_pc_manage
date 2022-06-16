@@ -130,10 +130,29 @@
 
       <el-table-column label="操作" align="center">
         <template slot-scope="scope">
-           <el-button @click="handleEdit(scope.$index, scope.row)" type="primary">查看详情</el-button>
-           <el-button @click="godetails(scope.row)" type="success">查看商品</el-button>
-           <el-button @click="fenghao(scope.$index, scope.row)" v-if="scope.row.accountstatus == 0" type="info">封号</el-button>
-           <el-button @click="fenghao(scope.$index, scope.row)" v-else type="danger">解封</el-button>
+          <el-button @click="handleEdit(scope.$index, scope.row)" type="primary"
+            >查看详情</el-button
+          >
+          <el-button @click="godetails(scope.row)" type="success"
+            >查看商品</el-button
+          >
+          <el-button
+            @click="fenghao(scope.$index, scope.row)"
+            v-if="scope.row.accountstatus == 0"
+            type="info"
+            >封号</el-button
+          >
+          <el-button
+            @click="fenghao(scope.$index, scope.row)"
+            v-else
+            type="danger"
+            >解封</el-button
+          >
+          <el-button
+            @click="handlePingjia(scope.$index, scope.row)"
+            type="primary"
+            >查看评价</el-button
+          >
         </template>
       </el-table-column>
     </el-table>
@@ -153,7 +172,7 @@
         :model="temp"
         label-position="left"
         label-width="70px"
-        style="width: 400px; margin-left: 50px"
+        style="width: 600px; margin-left: 0px"
       >
         <el-row class="input-flex">
           <el-col :span="4" style="text-align: right"> 店铺ID: </el-col>
@@ -185,7 +204,7 @@
             {{ temp.createtime | formatConversion }}
           </el-col>
         </el-row>
-        <el-row class="input-flex" style="height:auto;">
+        <el-row class="input-flex" style="height: auto">
           <el-col :span="4" style="text-align: right"> 店铺logo: </el-col>
           <el-col :span="19" :push="1">
             <el-image
@@ -196,7 +215,7 @@
             </el-image>
           </el-col>
         </el-row>
-        <el-row class="input-flex" style="height:auto;">
+        <el-row class="input-flex" style="height: auto">
           <el-col :span="4" style="text-align: right"> 营业执照: </el-col>
           <el-col :span="19" :push="1">
             <el-image
@@ -207,7 +226,7 @@
             </el-image>
           </el-col>
         </el-row>
-        <el-row class="input-flex" style="height:auto;">
+        <el-row class="input-flex" style="height: auto">
           <el-col :span="4" style="text-align: right"> 健康码: </el-col>
           <el-col :span="19" :push="1">
             <el-image
@@ -219,21 +238,11 @@
           </el-col>
         </el-row>
 
-         <el-row class="input-flex">
-          <el-col :span="5" style="text-align: right"> 配送费: </el-col>
-          <el-col :span="19" :push="1">
-            <el-input
-              v-model="temp.peisongfei"
-              style="width: 200px"
-              class="filter-item"
-            />
-          </el-col>
-        </el-row>
-
         <el-row class="input-flex">
           <el-col :span="5" style="text-align: right"> 起送价: </el-col>
           <el-col :span="19" :push="1">
-             <el-input
+            <el-input
+              type="number"
               v-model="temp.qisongjia"
               style="width: 200px"
               class="filter-item"
@@ -245,10 +254,103 @@
           <el-col :span="5" style="text-align: right"> 配送范围: </el-col>
           <el-col :span="19" :push="1">
             <el-input
+              type="number"
               v-model="temp.peisongfanwei"
               style="width: 200px"
               class="filter-item"
             />
+          </el-col>
+        </el-row>
+
+        <el-row class="input-flex">
+          <el-col :span="5" style="text-align: right"> 商家扣点(%): </el-col>
+          <el-col :span="19" :push="1">
+            <el-input
+              type="number"
+              v-model="temp.koudian"
+              style="width: 200px"
+              class="filter-item"
+            />
+          </el-col>
+        </el-row>
+
+        <el-row class="input-flex">
+          <el-col :span="5" style="text-align: right"> 起步价范围: </el-col>
+          <el-col :span="19" :push="1">
+            <el-input
+              type="number"
+              v-model="temp.qibufanwei"
+              style="width: 200px"
+              class="filter-item"
+            />
+          </el-col>
+        </el-row>
+
+        <el-row class="input-flex">
+          <el-col :span="5" style="text-align: right"> 配送起步价: </el-col>
+          <el-col :span="19" :push="1">
+            <el-input
+              type="number"
+              v-model="temp.qibujia"
+              style="width: 200px"
+              class="filter-item"
+            />
+          </el-col>
+        </el-row>
+
+        <el-row class="input-flex">
+          <el-col :span="5" style="text-align: right"> 配送额外价: </el-col>
+          <el-col :span="19" :push="1">
+            <el-input
+              type="number"
+              v-model="temp.overjia"
+              style="width: 200px"
+              class="filter-item"
+            />
+          </el-col>
+        </el-row>
+
+        <el-row class="input-flex">
+          <el-col :span="5" style="text-align: right"> 配送时间: </el-col>
+          <el-col :span="19" :push="1">
+            <el-input
+              type="text"
+              v-model="temp.peisongshijian"
+              style="width: 200px"
+              class="filter-item"
+            />
+          </el-col>
+        </el-row>
+
+        <el-row class="input-flex">
+          <el-col :span="5" style="text-align: right"> 提现标准: </el-col>
+          <el-col :span="19" :push="1">
+            <el-input
+              type="number"
+              v-model="temp.tixianbiaozhun"
+              style="width: 200px"
+              class="filter-item"
+            />
+          </el-col>
+        </el-row>
+
+        <el-row class="input-flex">
+          <el-col :span="5" style="text-align: right"> 是否营业: </el-col>
+          <el-col :span="19" :push="1">
+            <el-radio v-model="temp.isreceive" label="0">营业</el-radio>
+            <el-radio v-model="temp.isreceive" label="1">不营业</el-radio>
+          </el-col>
+        </el-row>
+
+        <el-row class="input-flex">
+          <el-col :span="5" style="text-align: right"> 店铺筛选: </el-col>
+          <el-col :span="19" :push="1">
+            <el-checkbox-group v-model="temp.tags">
+              <el-checkbox label="1">新商家</el-checkbox>
+              <el-checkbox label="2">会员商家</el-checkbox>
+              <el-checkbox label="3">为您推荐</el-checkbox>
+              <el-checkbox label="4">活动商家</el-checkbox>
+            </el-checkbox-group>
           </el-col>
         </el-row>
 
@@ -268,12 +370,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false"> 取消 </el-button>
-        <el-button
-          type="primary"
-          @click="updateData()"
-        >
-          确定
-        </el-button>
+        <el-button type="primary" @click="updateData()"> 确定 </el-button>
       </div>
     </el-dialog>
   </div>

@@ -62,3 +62,9 @@ export function getpingjia(data) {
   })
 }
 
+export function delPingjia(data) {
+  return getRequest({
+    url: getRequestUrl('/server/admin/delpingjia', data),
+    method: 'get',
+  })
+}

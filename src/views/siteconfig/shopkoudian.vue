@@ -1,9 +1,12 @@
 <template>
   <div class="app-container">
     <div class="input-flex">
-      <div class="left">商家抽成(%)：</div>
-      <input type="number" v-model="koudian" />
-      (0为不开启)
+      <div class="left">订单ID：</div>
+      <input type="number" v-model="orderid" />
+    </div>
+    <div class="input-flex">
+      <div class="left">骑手ID：</div>
+      <input type="number" v-model="qishouid" />
     </div>
     <el-button type="primary" @click="onSubmit">确定</el-button>
   </div>

@@ -14,7 +14,7 @@
         </div>
         <el-col :span="8"></el-col>
       </el-row>
-      <el-row :gutter="24">
+      <!-- <el-row :gutter="24">
         <div class="input-flex">
           <div class="left">评价人：</div>
           <el-input
@@ -24,8 +24,8 @@
             class="filter-item"
           />
         </div>
-      </el-row>
-      <el-row :gutter="24">
+      </el-row> -->
+      <!-- <el-row :gutter="24">
         <div class="input-flex">
           <div class="left">星级：</div>
           <div
@@ -39,7 +39,7 @@
             <span>{{ item.name }}</span>
           </div>
         </div>
-      </el-row>
+      </el-row> -->
 
       <el-row :gutter="24">
         <el-button
@@ -72,19 +72,52 @@
           <div>
             <span>评论时间：</span>{{ item.createtime | formatConversion }}
           </div>
+
+           <div>
+             <el-button
+              v-waves
+              class="filter-item"
+              type="primary"
+              @click="delComment(item.id,item.type)"
+            >
+              删除评论
+            </el-button>
+          </div>
+
         </div>
         <div class="content">
-          <span>评论内容：{{ item.ridertext }}</span>
-          <el-image
-            class="pingjiaimg"
-            v-for="itemc in item.riderimg"
-            :key="itemc"
-            :src="itemc"
-            :preview-src-list="item.riderimg"
-          >
-          </el-image>
+          <div class="riderstyle">
+            <span >骑手相关评论内容：{{ item.ridertext }}</span>
+            
+            <el-image
+              class="pingjiaimg"
+              v-for="itemc in item.riderimg"
+              :key="itemc"
+              :src="itemc"
+              :preview-src-list="item.riderimg"
+            >
+            </el-image>
+          </div>
+
+           <div class="shopstyle">
+            <span >商家相关评论内容：{{ item.shoptext }}</span>
+            
+            <el-image
+              class="pingjiaimg"
+              v-for="itemc in item.shopimg"
+              :key="itemc"
+              :src="itemc"
+              :preview-src-list="item.shopimg"
+            >
+            </el-image>
+          </div>
+
         </div>
+
+
       </div>
+
+      
     </div>
     <div style="width:100%;text-align:center;height:100px;line-height:100px;" v-else>
       暂无数据

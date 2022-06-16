@@ -16,6 +16,10 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     // do something before request is sent
+    // if (store.getters.jwt && store.getters.jwt !== "undefined"){
+    //   // config.params.jwt = store.getters.jwt
+    //   console.log(config,store.getters.jwt)
+    // }
     config.method === 'post' ? config.data = qs.stringify(config.data) : config.params
     config.headers['Content-Type'] = 'application/x-www-form-urlencoded'
     return config
@@ -29,9 +33,9 @@ service.interceptors.request.use(
 
 // response interceptor
 service.interceptors.response.use(
- 
   response => {
     const res = response.data
+    console.log(res,'res')
     // if the custom code is not 20000, it is judged as an error.
     if(response.status === 200 && response.config.method === 'options'){
       return 'SUCCESS';

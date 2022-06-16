@@ -133,3 +133,33 @@ export function getsiteconfig(data) {
     method: 'get',
   })
 }
+
+export function waimaizhipai(data) {
+  return getRequest({
+    url: getRequestUrl('/server/admin/waimaizhiding', data),
+    method: 'get',
+  })
+}
+
+
+export function webgonggaolist(data) {
+  return getRequest({
+    url: getRequestUrl('/server/index/gonggao', data),
+    method: 'get',
+  })
+}
+
+
+export function webgonggaomanage(data) {
+  return getRequest({
+    url: getRequestUrl('/server/admin/gonggaomanage', data),
+    method: 'get',
+  })
+}
+
+export function delgonggao(data) {
+  return getRequest({
+    url: getRequestUrl('/server/admin/delgonggao', data),
+    method: 'get',
+  })
+}

@@ -1,8 +1,9 @@
 import Pagination from "@/components/Pagination";
 import { getUserList, getFiltersUserList, editRiderInfo, recharge, rechargeJifen } from "@/api/user";
-import { getBase64, upload } from '@/api/upload'
+import { getBase64, upload,getmap } from '@/api/upload'
 import waves from "@/directive/waves"; // waves directive
 import { parseTime } from '@/utils';
+import { getriderorderlist } from "@/api/rider";
 
 export default {
     name: "riderlist",
@@ -28,6 +29,7 @@ export default {
                 tabDay: '0',
                 xiaofevalue: '',
             },
+            gridData: [],            
             pickerOptions: {
                 shortcuts: [{
                     text: '最近一周',
@@ -96,12 +98,56 @@ export default {
             dialogImageUrl: '',
             dialogVisible: false,
             dialogJifenVisible: false,
+            dialogMapVisible:false,
+            mapurl:"https://restapi.amap.com/v3/staticmap?markers=-1,https://a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-default.png,0:120.635399,27.966388&key=db02839d3d4b5cd28ca4f5d631d303db",
+            fit:['fill'],
+            dialogTableVisible:false
         };
     },
     created() {
         this.getUserList();
     },
     methods: {
+        getorderid(detail){
+            return detail[0].orderid
+        },
+        getstatusname(status,type){
+            //0待付款  1已付款等待商家接单 2.商家已接单等待骑手接单 3骑手接单去取货 4骑手送货中 5已完成 6已取消
+            if(type == 'quhuo' ){
+                if(status == 4){
+                    return '已取货' 
+                }else{
+                    return '未取货'
+                }
+            }
+
+            if(type == 'wancheng'){
+                if(status == 5){
+                    return '已完成' 
+                }else{
+                    return '未完成'
+                }
+            }
+           
+        },
+        getreceiptname(isreceipt){
+            if(isreceipt == 1){
+                return '未接单'
+            }else{
+                return '可接单'
+            }
+        },
+        handleOrder(index,row){
+            this.dialogTableVisible = true
+            getriderorderlist({status:1,rider_id:row.id,from:1,count:10}).then( res => {
+                this.gridData = res.data.list
+                console.log(this.gridData,"========")
+            })
+        },
+     
+        handleMap(index, row){
+            this.dialogMapVisible = true
+        },
         getUserList() {
             this.listLoading = true;
             getUserList(this.listQuery).then((res) => {
